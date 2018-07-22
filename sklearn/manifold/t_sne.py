@@ -336,6 +336,19 @@ def _gradient_descent(objective, p0, it, n_iter,
 
     tic = time()
     for i in range(it, n_iter):
+        
+        if i % 100 == 0:
+            if gauth.credentials is None:
+              # Authenticate if they're not there
+              gauth.LocalWebserverAuth()
+            elif gauth.access_token_expired:
+              # Refresh them if expired
+              print( "Google Drive Token Expired, Refreshing")
+              gauth.Refresh()
+            else:
+              # Initialize the saved creds
+              gauth.Authorize()
+        
         error, grad = objective(p, *args, **kwargs)
         grad_norm = linalg.norm(grad)
 
@@ -356,7 +369,7 @@ def _gradient_descent(objective, p0, it, n_iter,
             if verbose >= 2:
                 print("[t-SNE] Iteration %d: error = %.7f,"
                       " gradient norm = %.7f"
-                      " (%s iterations in %0.3fs)"
+                      " (%s iterations in %0.3fs) Yay!"
                       % (i + 1, error, grad_norm, n_iter_check, duration))
 
             if error < best_error:
