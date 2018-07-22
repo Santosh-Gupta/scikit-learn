@@ -612,7 +612,9 @@ class TSNE(BaseEstimator):
         http://lvdmaaten.github.io/publications/papers/JMLR_2014.pdf
     """
     # Control the number of exploration iterations with early_exaggeration on
-    _EXPLORATION_N_ITER = 250
+    #_EXPLORATION_N_ITER = 250
+    _EXPLORATION_N_ITER = 0
+    #Basically I turned of early_exaggeration 7-22-18 S.G.
 
     # Control the number of iterations between progress checks
     _N_ITER_CHECK = 50
