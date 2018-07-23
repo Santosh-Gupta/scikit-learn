@@ -613,7 +613,7 @@ class TSNE(BaseEstimator):
     """
     # Control the number of exploration iterations with early_exaggeration on
     #_EXPLORATION_N_ITER = 250
-    _EXPLORATION_N_ITER = 0
+    _EXPLORATION_N_ITER = 1
     #Basically I turned of early_exaggeration 7-22-18 S.G.
 
     # Control the number of iterations between progress checks
@@ -834,9 +834,9 @@ class TSNE(BaseEstimator):
         # Learning schedule (part 1): do 250 iteration with lower momentum but
         # higher learning rate controlled via the early exageration parameter
         P *= self.early_exaggeration
-        params, kl_divergence, it = _gradient_descent(obj_func, params,
-                                                      **opt_args)
-        if self.verbose:
+#         params, kl_divergence, it = _gradient_descent(obj_func, params,
+#                                                       **opt_args)
+         if self.verbose:
             print("[t-SNE] KL divergence after %d iterations with early "
                   "exaggeration: %f" % (it + 1, kl_divergence))
 
