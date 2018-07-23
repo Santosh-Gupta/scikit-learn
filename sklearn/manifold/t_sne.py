@@ -837,9 +837,9 @@ class TSNE(BaseEstimator):
 #         params, kl_divergence, it = _gradient_descent(obj_func, params,
 #                                                       **opt_args)
         it=0
-        if self.verbose:
-            print("[t-SNE] KL divergence after %d iterations with early "
-                  "exaggeration: %f" % (it + 1, kl_divergence))
+#         if self.verbose:
+#             print("[t-SNE] KL divergence after %d iterations with early "
+#                   "exaggeration: %f" % (it + 1, kl_divergence))
 
         # Learning schedule (part 2): disable early exaggeration and finish
         # optimization with a higher momentum at 0.8
