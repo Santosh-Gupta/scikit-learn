@@ -348,7 +348,7 @@ def _gradient_descent(objective, p0, it, n_iter,
     tic = time()
     for i in range(it, n_iter):
         
-        if i % 100 == 0:
+        if i % 50 == 0:
             if gauth.credentials is None:
               # Authenticate if they're not there
               gauth.LocalWebserverAuth()
