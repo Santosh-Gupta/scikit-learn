@@ -870,6 +870,7 @@ class TSNE(BaseEstimator):
         # Learning schedule (part 1): do 250 iteration with lower momentum but
         # higher learning rate controlled via the early exageration parameter
         P *= self.early_exaggeration
+        it = 0
 #         params, kl_divergence, it = _gradient_descent(obj_func, params,
 #                                                       **opt_args)
 #         if self.verbose:
@@ -878,7 +879,7 @@ class TSNE(BaseEstimator):
 
         # Learning schedule (part 2): disable early exaggeration and finish
         # optimization with a higher momentum at 0.8
-        it = 0
+        
         P /= self.early_exaggeration
         remaining = self.n_iter - self._EXPLORATION_N_ITER
         if it < self._EXPLORATION_N_ITER or remaining > 0:
