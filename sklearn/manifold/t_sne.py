@@ -361,7 +361,7 @@ def _gradient_descent(objective, p0, it, n_iter,
     for i in range(it, n_iter):
         
         
-        if i % 1 == 0:
+        if i % 50 == 0:
             print("checking credentials")
             if gauth.credentials is None:
               # Authenticate if they're not there
@@ -646,7 +646,8 @@ class TSNE(BaseEstimator):
         http://lvdmaaten.github.io/publications/papers/JMLR_2014.pdf
     """
     # Control the number of exploration iterations with early_exaggeration on
-    _EXPLORATION_N_ITER = 250
+    #_EXPLORATION_N_ITER = 250
+    _EXPLORATION_N_ITER = 0 #changed to 0 from 250
 
     # Control the number of iterations between progress checks
     _N_ITER_CHECK = 50
@@ -869,11 +870,11 @@ class TSNE(BaseEstimator):
         # Learning schedule (part 1): do 250 iteration with lower momentum but
         # higher learning rate controlled via the early exageration parameter
         P *= self.early_exaggeration
-        params, kl_divergence, it = _gradient_descent(obj_func, params,
-                                                      **opt_args)
-        if self.verbose:
-            print("[t-SNE] KL divergence after %d iterations with early "
-                  "exaggeration: %f" % (it + 1, kl_divergence))
+#         params, kl_divergence, it = _gradient_descent(obj_func, params,
+#                                                       **opt_args)
+#         if self.verbose:
+#             print("[t-SNE] KL divergence after %d iterations with early "
+#                   "exaggeration: %f" % (it + 1, kl_divergence))
 
         # Learning schedule (part 2): disable early exaggeration and finish
         # optimization with a higher momentum at 0.8
