@@ -878,6 +878,7 @@ class TSNE(BaseEstimator):
 
         # Learning schedule (part 2): disable early exaggeration and finish
         # optimization with a higher momentum at 0.8
+        it = 0
         P /= self.early_exaggeration
         remaining = self.n_iter - self._EXPLORATION_N_ITER
         if it < self._EXPLORATION_N_ITER or remaining > 0:
