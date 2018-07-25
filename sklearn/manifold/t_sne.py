@@ -361,11 +361,13 @@ def _gradient_descent(objective, p0, it, n_iter,
     for i in range(it, n_iter):
         
         
-        if i % 100 == 0:
-            print("checking credentials ~")
+        if i % 50 == 0:
+            print("checking credentials ~~")
             auth.authenticate_user()
             gauth = GoogleAuth()
             gauth.credentials = GoogleCredentials.get_application_default()
+            preventExpire = drive.CreateFile()
+            del preventExpire
         
         check_convergence = (i + 1) % n_iter_check == 0
         # only compute the error when needed
