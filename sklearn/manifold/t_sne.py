@@ -366,7 +366,6 @@ def _gradient_descent(objective, p0, it, n_iter,
             auth.authenticate_user()
             gauth = GoogleAuth()
             gauth.credentials = GoogleCredentials.get_application_default()
-            alive = = GoogleDrive(gauth)
         
         check_convergence = (i + 1) % n_iter_check == 0
         # only compute the error when needed
