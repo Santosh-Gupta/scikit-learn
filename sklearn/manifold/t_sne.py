@@ -362,7 +362,7 @@ def _gradient_descent(objective, p0, it, n_iter,
         
         
         if i % 100 == 0:
-            print("checking credentials")
+            print("checking credentials ~")
             auth.authenticate_user()
             gauth = GoogleAuth()
             gauth.credentials = GoogleCredentials.get_application_default()
